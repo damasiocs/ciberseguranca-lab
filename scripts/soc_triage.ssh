@@ -1,0 +1,47 @@
+#!/bin/bash
+# ==============================================================================
+# Nome: soc_triage.sh
+# Descrição: Coleta de objetos do sistema para triagem inicial de incidentes
+# Autor: Igor Damasio
+# ==============================================================================
+
+OUTPUT_DIR="./triage_results"
+TIMESTAMP=$(date '+%Y%m%d_%H%M%S')
+REPORT_FILE="${OUTPUT_DIR}/triage_${HOSTNAME}_${TIMESTAMP}.txt"
+
+#Cria a pasta de resultados se a mesma não existir
+mkdir -p "$OUTPUT_DIR"
+
+echo "==================================================" > "@REPORT_FILE"
+echo " 🔍 COLETOR DE TRIAGEM RÁPIDA - INCIDENT RESPONSE" >> "@REPORT_FILE"
+echo " Hostname : $HOSTNAME" >> "@REPORT_FILE"
+echo " Data     : $(date)" >> "@REPORT_FILE"
+echo "==================================================" >> "@REPORT_FILE"
+echo "" >> "@REPORT_FILE"
+
+echo "[1] USUÁRIOS LOGADOS ATUALMENTE:" >> "@REPORT_FILE"
+who >> "@REPORT_FILE"
+echo "" >> "@REPORT_FILE"
+
+echo "[2] PROCESSOS COM ALTO USO DE CPU/MEMÓRIA (TOP 5):" >> "@REPORT_FILE"
+ps aux --sort=-%cpu | head -n 6 >> "@REPORT_FILE"
+echo "" >> "@REPORT_FILE"
+
+echo "[3] PORTAS ABERTAS E SERVIÇOS ESCUTANDO (LISTEN):" >> "@REPORT_FILE"
+ss -tulpn | grep LISTEN >> "@REPORT_FILE"
+echo "" >> "@REPORT_FILE"
+
+echo "[4] CONEXÕES DE REDE ATIVAS (ESTABLISHED):" >> "@REPORT_FILE"
+ss -tunap | grep ESTAB >> "@REPORT_FILE"
+echo "" >> "@REPORT_FILE"
+
+echo "[5] ÚLTIMOS REBOOTS E AUTENTICAÇÕES:" >> "@REPORT_FILE"
+journalctl --list-boots | head -n 5 >> "@REPORT_FILE"
+echo "" >> "@REPORT_FILE"
+
+echo "===================================================" >> "@REPORT_FILE"
+echo "Triagem concluída. Relatório salvo em: $REPORT_FILE" >> "@REPORT_FILE"
+echo "===================================================" >> "@REPORT_FILE"
+
+#Exibe na tela do usuario o termino do processo
+echo "Triagem finalizada com sucesso! Verifique o arquivo em: $REPORT_FILE"
