@@ -58,7 +58,7 @@ Bem-vindo ao meu portfólio de Cibersegurança! Este repositório é dedicado a 
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-## ## 📜 Scripts e Automação (Bash / Shell Scripting)
+## ## Scripts e Automação (Bash / Shell Scripting)
 
 | Script | Categoria | Descrição |
 | :--- | :--- | :--- |
@@ -69,11 +69,11 @@ Bem-vindo ao meu portfólio de Cibersegurança! Este repositório é dedicado a 
 
 ## Resoluções de Casos e Investigações (Write-ups)
 
-* **LetsDefend - Incident Investigation:** [Nome do Caso] — *Investigação de alerta de phishing e isolamento de endpoint.*
-* **TryHackMe - SOC Level 1:** [Nome da Sala] — *Análise de tráfego de rede utilizando Wireshark.*
+* **LetsDefend - Incident Investigation:** — *Investigação de alerta de phishing e isolamento de endpoint.*
+* **TryHackMe - SOC Level 1:** — *Análise de tráfego de rede utilizando Wireshark.*
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-## ✉️ Contato & Conexões
+## Contato & Conexões
 * **LinkedIn:** 
 * **Email:** igor.damasio52@gmail.com
